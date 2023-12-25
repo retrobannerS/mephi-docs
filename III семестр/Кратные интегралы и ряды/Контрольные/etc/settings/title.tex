@@ -1,0 +1,84 @@
+%  ----------- Title -----------
+\RequirePackage{ifthen}
+\newcommand{\FullCourseNameFirstPart}{\so{НАЗВАНИЕ~ПРЕДМЕТА}}
+\newcommand{\FullCourseNameSecondPart}{\so{}}
+\newcommand{\SchoolName}{ИИКС}
+\newcommand{\TrackName}{ПИ}
+\newcommand{\SemesterNumber}{III}
+\newcommand{\LecturerInitials}{Фамилия Имя Отчество}
+\newcommand{\YandexDiskLink}{}
+\newcommand{\OverleafLink}{}
+\newcommand{\GithubLink}{}
+\newcommand{\ImageName}{logo}
+
+\newcommand{\AuthorA}{} \newcommand{\AuthorB}{} \newcommand{\AuthorC}{} \newcommand{\AuthorD}{}
+
+\newcommand{\WriteAuthors}{%
+	\ifthenelse{\equal{\AuthorA}{}}{}{
+		\ifthenelse{\equal{\AuthorB}{}}{Автор: }{Авторы: }%
+		\ifthenelse{\equal{\AuthorA}{}}{}{\AuthorA}%
+		\ifthenelse{\equal{\AuthorB}{}}{}{, \AuthorB}%
+		\ifthenelse{\equal{\AuthorC}{}}{}{, \AuthorC}%
+		\ifthenelse{\equal{\AuthorD}{}}{}{, \AuthorD}%
+	}}
+
+\newcommand{\makeTitle}{%
+	\begin{titlepage}
+		\clearpage\thispagestyle{empty}
+		\centering
+
+		\textit{Федеральное государственное автономное учреждение \\
+			высшего образования}
+		\vspace{0.5ex}
+
+		\textbf{Национальный исследовательский ядерный университет
+			\\
+			<<МИФИ>>}
+		\vspace{20ex}
+
+		\rule{\linewidth}{0.5mm}
+		{\textbf{\FullCourseNameFirstPart}}
+		\ifthenelse{\equal{\FullCourseNameSecondPart}{}}{}{
+		\\
+		{\textbf{\FullCourseNameSecondPart}}}
+		\rule{\linewidth}{0.5mm}
+
+		\ifthenelse{\equal{\SemesterNumber}{}}{}{
+			\SemesterNumber
+			\\}
+		\ifthenelse{\equal{\SchoolName}{}}{}{
+			\SchoolName
+			\\}
+		\ifthenelse{\equal{\TrackName}{}}{}{
+			\TrackName
+			\\}
+		\ifthenelse{\equal{\LecturerInitials}{}}{}{
+			\LecturerInitials
+		}
+		\vspace{1ex}
+
+		\ifthenelse{\equal{\ImageName}{}}{}{
+			\begin{figure}[!ht]
+				\centering
+				\includegraphics[width=0.6\textwidth]{\ImageName}
+			\end{figure}}
+		\begin{flushright}
+			\noindent
+			\WriteAuthors
+			\ifthenelse{\equal{\YandexDiskLink}{}}{}{
+				\\
+				\href{\YandexDiskLink}{\textit{Проект на YandexDisk}}}
+			\ifthenelse{\equal{\OverleafLink}{}}{}{
+				\\
+				\href{\OverleafLink}{\textit{Проект на Overleaf}}}
+			\ifthenelse{\equal{\GithubLink}{}}{}{
+				\\
+				\href{\GithubLink}{\textit{Проект на GitHub}}}
+		\end{flushright}
+
+		\vfill
+		Москва, \CourseDate\ года.
+		\pagebreak
+
+	\end{titlepage}%
+}

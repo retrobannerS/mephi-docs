@@ -1,0 +1,53 @@
+% ----------- Math and theorems -----------
+\RequirePackage{amsthm,amssymb,xparse,newtxmath}
+
+\renewcommand{\thesubsubsection}{\arabic{subsubsection}}
+
+\theoremstyle{plain}
+\newtheorem{theorem}[subsubsection]{Теорема}
+\newtheorem{lemma}[subsubsection]{Лемма}
+
+\theoremstyle{definition} % "Определение"
+\newtheorem{definition}{Определение}[subsubsection]
+\newtheorem{corollary}{Corol.}
+
+
+\theoremstyle{remark} % "Примечание"
+\newtheorem*{solution}{Solution}
+\newtheorem*{example}{Example}
+\newtheorem*{remark}{Remark}
+
+% smart theorems
+
+\newenvironment{Th}[1]
+{\begin{theorem}
+        \ifthenelse{\equal{#1}{}}
+        {
+            \addcontentsline{toc}
+            {subsubsection}
+            {\protect Теорема \thesubsubsection.}
+            \textnormal{\\}
+        }
+        {
+            \addcontentsline{toc}
+            {subsubsection}
+            {\protect Теорема \thesubsubsection. (#1) }
+            \textnormal{\textbf{(#1)}\\}
+        }
+        }
+        {\end{theorem}}
+
+\newenvironment{Def}[1]
+{\begin{definition}
+        \ifthenelse{\equal{#1}{}}
+        {}
+        {[\textit{#1}]\\}}
+        {\end{definition}}
+
+
+% ----------- Math short-cats
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\Cx}{\ensuremath{\mathbb{C}}}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\E}{\ensuremath{\mathbb{E}}}
