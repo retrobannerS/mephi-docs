@@ -1,0 +1,38 @@
+\usepackage{titlesec}
+\usepackage{titletoc}
+
+% Настройка форматирования номеров глав
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+
+% Настройка форматирования заголовков секций (глав)
+\titleformat{\section}[display]
+{\normalfont\Large\centering\scshape}
+{\textbf{\caps{ГЛАВА \thesection.}}}{-7pt}{\MakeUppercase}
+
+% Настройка форматирования оглавления для секций (глав)
+\titlecontents{section}[0em]
+{\addvspace{0.5ex}}
+{Глава \thecontentslabel.\quad}
+{}
+{\titlerule*[1pc]{.}\contentspage}
+
+% Настройка форматирования заголовков подсекций
+\titleformat{\subsection}[block]
+{\normalfont\normalsize\large}
+{\textbf{\S\thesubsection.}\ }
+{0pt}{\itshape}
+
+% Настройка форматирования оглавления для подсекций
+\titlecontents{subsection}[2.5em]
+{\addvspace{0.5ex}}
+{\S\thecontentslabel.\quad}
+{}
+{\titlerule*[1pc]{.}\contentspage}
+
+% Настройка форматирования оглавления для подподсекций
+\titlecontents{subsubsection}[6em]
+{\addvspace{0.5ex}}
+{\thecontentslabel.\quad}
+{}
+{\titlerule*[1pc]{.}\contentspage}

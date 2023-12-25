@@ -30,3 +30,6 @@
 % ----------- Math and theorems -----------
 \input{etc/settings/math}
 
+%------------ List of Contents ------------
+\input{etc/settings/contents.tex}
+
