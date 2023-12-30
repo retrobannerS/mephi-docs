@@ -2,13 +2,16 @@
 \RequirePackage{amsthm,amssymb,xparse,newtxmath}
 
 \renewcommand{\thesubsubsection}{\arabic{subsubsection}}
+\newcounter{lemms}
+\newcounter{theorems}
+\newcounter{definitions}
 
 \theoremstyle{plain}
-\newtheorem{theorem}[subsubsection]{Теорема}
-\newtheorem{lemma}[subsubsection]{Лемма}
+\newtheorem{theorem}[theorems]{Теорема}
+\newtheorem{lemma}[lemms]{Лемма}
 
 \theoremstyle{definition} % "Определение"
-\newtheorem{definition}{Определение}[subsubsection]
+\newtheorem{definition}[definitions]{Определение}
 \newtheorem{corollary}{Corol.}
 
 
@@ -21,28 +24,46 @@
 
 \newenvironment{Th}[1]
 {\begin{theorem}
-        \ifthenelse{\equal{#1}{}}
-        {
-            \addcontentsline{toc}
-            {subsubsection}
-            {\protect Теорема \thesubsubsection.}
-            \textnormal{\\}
-        }
-        {
-            \addcontentsline{toc}
-            {subsubsection}
-            {\protect Теорема \thesubsubsection. (#1) }
-            \textnormal{\textbf{(#1)}\\}
-        }
-        }
-        {\end{theorem}}
+                \ifthenelse{\equal{#1}{}}
+                {
+                        \addcontentsline{toc}
+                        {subsubsection}
+                        {\protect Теорема \thetheorems.}
+                        \textnormal{\\}
+                }
+                {
+                        \addcontentsline{toc}
+                        {subsubsection}
+                        {\protect Теорема \thesubsubsection. (#1) }
+                        \textnormal{\textbf{(#1)}\\}
+                }
+                }
+                {\end{theorem}}
+
+\newenvironment{Lm}[1]
+{\begin{lemma}
+                \ifthenelse{\equal{#1}{}}
+                {
+                        \addcontentsline{toc}
+                        {subsubsection}
+                        {\protect Лемма \thelemms.}
+                        \textnormal{\\}
+                }
+                {
+                        \addcontentsline{toc}
+                        {subsubsection}
+                        {\protect Лемма \thelemms. (#1) }
+                        \textnormal{\textbf{(#1)}\\}
+                }
+                }
+                {\end{lemma}}
 
 \newenvironment{Def}[1]
 {\begin{definition}
-        \ifthenelse{\equal{#1}{}}
-        {}
-        {[\textit{#1}]\\}}
-        {\end{definition}}
+                \ifthenelse{\equal{#1}{}}
+                {}
+                {[\textit{#1}]\\}}
+                {\end{definition}}
 
 
 % ----------- Math short-cats

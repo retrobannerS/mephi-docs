@@ -20,19 +20,12 @@
 % Настройка форматирования заголовков подсекций
 \titleformat{\subsection}[block]
 {\normalfont\normalsize\large}
-{\textbf{\S\thesubsection.}\ }
+{\textbf{\S \thesubsection.}\ }
 {0pt}{\itshape}
 
 % Настройка форматирования оглавления для подсекций
 \titlecontents{subsection}[2.5em]
 {\addvspace{0.5ex}}
-{\S\thecontentslabel.\quad}
-{}
-{\titlerule*[1pc]{.}\contentspage}
-
-% Настройка форматирования оглавления для подподсекций
-\titlecontents{subsubsection}[6em]
-{\addvspace{0.5ex}}
-{\thecontentslabel.\quad}
+{\textbf{\S}\thecontentslabel.\quad}
 {}
 {\titlerule*[1pc]{.}\contentspage}
