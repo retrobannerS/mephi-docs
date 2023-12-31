@@ -5,22 +5,30 @@
 \newcounter{lemms}
 \newcounter{theorems}
 \newcounter{definitions}
+\newcounter{tasks}
 
 \theoremstyle{plain}
 \newtheorem{theorem}[theorems]{Теорема}
 \newtheorem{lemma}[lemms]{Лемма}
+\newtheorem{task}[tasks]{Задача}
 
 \theoremstyle{definition} % "Определение"
 \newtheorem{definition}[definitions]{Определение}
-\newtheorem{corollary}{Corol.}
+\newtheorem{corollary}{Следствие}[theorems]
 
 
 \theoremstyle{remark} % "Примечание"
-\newtheorem*{solution}{Solution}
-\newtheorem*{example}{Example}
-\newtheorem*{remark}{Remark}
+\newtheorem*{example}{Пример}
+\newtheorem*{remark}{Замечание}
 
-% smart theorems
+% Окружения внутри tasks
+
+\newenvironment{condition}{\subsubsection*{Условие}}{}
+\newenvironment{solution}{\subsubsection*{Решение}}{\vspace*{25pt}}
+\newenvironment{answer}{\\\textbf{Ответ:}$}{$}
+
+
+% Чтобы всё корректно добавлялось в оглавление
 
 \newenvironment{Th}[1]
 {\begin{theorem}
@@ -65,10 +73,30 @@
                 {[\textit{#1}]\\}}
                 {\end{definition}}
 
+\newenvironment{Task}[1]
+{\begin{task}
+                \ifthenelse{\equal{#1}{}}
+                {
+                        \addcontentsline{toc}
+                        {subsubsection}
+                        {\protect Задача \thetasks.}
+                        \textnormal{\\}
+                }
+                {
+                        \addcontentsline{toc}
+                        {subsubsection}
+                        {\protect Задача \thetasks. (#1) }
+                        \textnormal{\textbf{(#1)}\\}
+                }
+                }
+                {\end{task}}
+
+
+
 
 % ----------- Math short-cats
 \newcommand{\R}{\ensuremath{\mathbb{R}}}
 \newcommand{\N}{\ensuremath{\mathbb{N}}}
 \newcommand{\Cx}{\ensuremath{\mathbb{C}}}
 \newcommand{\Z}{\ensuremath{\mathbb{Z}}}
-\newcommand{\E}{\ensuremath{\mathbb{E}}}
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
